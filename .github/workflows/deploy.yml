@@ -6,12 +6,15 @@ on:
       - dev
 env:
   CACHE_KEY: node-deps
-  MONGODB_DB_NAME: gha-demo
+  MONGODB_DB_NAME: gha-demo-docker
 jobs:
   test:
     #env name you have in gh config environments
     environment: testing
     runs-on: ubuntu-latest
+    #image name available in public repos in docker hub
+    container:
+      image: node:16
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb+srv
       MONGODB_CLUSTER_ADDRESS: cluster0.zjji3rl.mongodb.net
