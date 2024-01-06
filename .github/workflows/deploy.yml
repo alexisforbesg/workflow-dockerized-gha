@@ -9,11 +9,12 @@ env:
   MONGODB_DB_NAME: gha-demo
 jobs:
   test:
+    #env name you have in gh config environments
     environment: testing
     runs-on: ubuntu-latest
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb+srv
-      MONGODB_CLUSTER_ADDRESS: cluster0.ntrwp.mongodb.net
+      MONGODB_CLUSTER_ADDRESS: freecluster.kny13rs.mongodb.net
       MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
       MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
       PORT: 8080
@@ -41,7 +42,7 @@ jobs:
       - name: Output information
         env:
           PORT: 3000
-        run: |        
+        run: |
           echo "MONGODB_DB_NAME: $MONGODB_DB_NAME"
           echo "MONGODB_USERNAME: $MONGODB_USERNAME"
           echo "${{ env.PORT }}"
